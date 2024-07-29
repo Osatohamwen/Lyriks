@@ -10,14 +10,13 @@ export const shazamCoreApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getSongsByGenre: builder.query({ query: (genre) => `v1/charts/genre-world?genre_code=${genre}` }),
-    getSongsByCountry: builder.query({ query: (countryCode) => `v1/charts/country?country_code=${countryCode}` }),
-    getSongsBySearch: builder.query({ query: (searchTerm) => `v1/search/multi?search_type=SONGS_ARTISTS&query=${searchTerm}` }),
-    
-    // Adjusted
     getTopCharts: builder.query({
       query: () => '',
     }),
+
+    getSongsBySearch: builder.query({ query: (searchTerm) => `/?query=${searchTerm}` }),
+    getSongsByGenre: builder.query({ query: (genre) => `/?genreCode=${genre}` }),
+    getSongsByCountry: builder.query({ query: (country) => `/?country_code=${country}` }),
     getArtistDetails: builder.query({ query: (artistId) => `artists/?artist_id=${artistId}`}),
     getSongDetails: builder.query({ query: ({ songid }) => `songData/?track_id=${songid}` }),
     getSongRelated: builder.query({ query: ({ songid }) => `songs/?track_id=${songid}` }),
