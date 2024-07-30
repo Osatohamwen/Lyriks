@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 import { Error, Loader, SongCard } from "../components";
-import { useGetSongsByCountryQuery } from "../redux/services/shazamCore";
+import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 
 const AroundYou = () => {
   
@@ -11,7 +11,7 @@ const AroundYou = () => {
     const [loading, setLoading]= useState(true);
 
     const {activeSong, isPlaying }= useSelector((state) => state.player);
-    const {data, isFetching, error}= useGetSongsByCountryQuery(country);
+    const {data, isFetching, error}= useGetTopChartsQuery(country);
 
     console.log(country);
 
